@@ -1,0 +1,21 @@
+.landing-page {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.landing-section-1 {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    .section-1-background {
+        height: auto;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+}

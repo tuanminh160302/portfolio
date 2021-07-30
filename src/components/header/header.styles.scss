@@ -1,0 +1,63 @@
+@import '../../assets/scss/ui-kit.scss';
+
+.header {
+    height: 10vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    font-family: playfair;
+    position: fixed;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .header-logo {
+        color: $sig-yellow;
+        font-size: 1.5rem;
+        font-weight: lighter;
+        cursor: pointer;
+        margin-left: 5vw;
+    }
+    
+    .header-nav-container {
+        margin-right: 5vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        
+        .header-nav-item {
+            color: white;
+            font-size: .8rem;
+            padding: 15px 20px;
+            cursor: pointer;
+            transform: translateY(100px);
+            -webkit-transform: translateY(100px);
+            opacity: 0;
+            
+            &.smooth-hover {
+                transition: .3s ease-out
+            }
+
+            &.smooth-hover:hover {
+                background-color: white;
+                color: black;
+                transition: .3s ease-in;
+            }
+
+
+        }
+
+        .header-open {
+            fill: white;
+            margin-left: 1vw;
+        }
+
+        .header-close {
+            fill: white;
+            margin-left: 1vw;
+        }
+
+    }
+}

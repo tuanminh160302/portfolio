@@ -1,23 +1,17 @@
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
-function App() {
+import { Switch, Route, Redirect } from 'react-router-dom'
+import Header from './components/header/header.component';
+import LandingPage from './pages/landing-page/landing-page.component';
+
+const App = (props) => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header></Header>
+      <Switch>
+        <Route exact path='/' render={() => (<LandingPage />)}></Route>
+      </Switch>
     </div>
   );
 }
