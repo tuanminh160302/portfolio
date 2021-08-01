@@ -10,11 +10,11 @@ const Header = (props) => {
     const [smoothHover, setSmoothHover] = useState(false)
 
     const handleMenuOpen = () => {
-        gsap.to('.header-open', { duration: .3, opacity: 0})
-        gsap.to('.header-close', { delay: .3, display: 'block'})
-        gsap.to('.header-close', { delay: .3, duration: .3, opacity: '1'})
+        gsap.to('.header-open', { duration: .5, opacity: 0})
+        gsap.to('.header-close', { delay: .5, display: 'block'})
+        gsap.to('.header-close', { delay: .5, duration: .5, opacity: '1'})
         
-        gsap.to('.header-nav-container', { display: 'flex'})
+        gsap.to('.header-nav-item', { pointerEvents: 'auto'})
 
         gsap.to('.header-nav-item', {
             duration: 1.5,
@@ -42,13 +42,13 @@ const Header = (props) => {
     }
 
     const handleMenuClose = () => {
-        gsap.to('.header-close', { duration: .3, opacity: 0})
-        gsap.to('.header-close', { delay: .3, display: 'none'})
-        gsap.to('.header-open', { delay: .3, duration: .3, opacity: '1'})
+        gsap.to('.header-close', { duration: .5, opacity: 0})
+        gsap.to('.header-close', { delay: .5, display: 'none'})
+        gsap.to('.header-open', { delay: .5, duration: .5, opacity: '1'})
 
         setSmoothHover(false)
 
-        gsap.to('.header-nav-container', { delay: 1.1, display: 'none'})
+        gsap.to('.header-nav-item', { delay: 1.1, pointerEvents: 'none'})
 
         gsap.to('.header-nav-item', {
             duration: 1.5,
@@ -76,7 +76,7 @@ const Header = (props) => {
                 <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item`}>home</span>
                 <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item`}>work</span>
                 <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item`}>skills</span>
-                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item`}>resume</span>
+                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item`}>resumé</span>
                 <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item`}>contact</span>
                 <OpenIcon className='header-open' onClick={() => {handleMenuOpen()}}/>
                 <CloseIcon className='header-close' onClick={() => {handleMenuClose()}}/>

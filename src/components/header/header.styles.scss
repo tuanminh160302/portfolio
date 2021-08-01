@@ -1,11 +1,10 @@
 @import '../../assets/scss/ui-kit.scss';
 
 .header {
-    height: 10vh;
+    height: 12.5vh;
     width: 100vw;
     margin: 0;
     padding: 0;
-    font-family: playfair;
     position: fixed;
     background-color: transparent;
     display: flex;
@@ -14,11 +13,12 @@
     align-items: center;
 
     .header-logo {
-        color: $sig-yellow;
+        color: $sig-cyan;
         font-size: 1.5rem;
         font-weight: lighter;
         cursor: pointer;
         margin-left: 5vw;
+        font-family: playfair;
     }
     
     .header-nav-container {
@@ -29,8 +29,10 @@
         
         .header-nav-item {
             color: white;
+            font-family: montserrat;
+            font-weight: 100;
             font-size: .8rem;
-            padding: 15px 20px;
+            padding: 6px 20px;
             cursor: pointer;
             transform: translateY(200px);
             -webkit-transform: translateY(200px);
