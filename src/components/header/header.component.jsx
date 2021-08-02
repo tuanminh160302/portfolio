@@ -17,7 +17,7 @@ const Header = (props) => {
         gsap.to('.header-nav-item', { pointerEvents: 'auto'})
 
         gsap.to('.header-nav-item', {
-            duration: 1.5,
+            duration: 0.9,
             y: 0,
             ease: 'power4.out',
             stagger: {
@@ -27,7 +27,7 @@ const Header = (props) => {
         })
 
         gsap.to('.header-nav-item', {
-            duration: 1,
+            duration: .7,
             opacity: 1,
             stagger: {
                 each: 0.1,
@@ -38,7 +38,7 @@ const Header = (props) => {
 
         setTimeout(() => {
             setSmoothHover(true)
-        }, 1500)
+        }, 910)
     }
 
     const handleMenuClose = () => {
@@ -48,10 +48,10 @@ const Header = (props) => {
 
         setSmoothHover(false)
 
-        gsap.to('.header-nav-item', { delay: 1.1, pointerEvents: 'none'})
+        gsap.to('.header-nav-item', { pointerEvents: 'none'})
 
         gsap.to('.header-nav-item', {
-            duration: 1.5,
+            duration: 0.9,
             y: 200,
             ease: 'power4.inOut',
             stagger: {
@@ -60,7 +60,7 @@ const Header = (props) => {
             }
         })
         gsap.to('.header-nav-item', {
-            duration: 1,
+            duration: 0.7,
             opacity: 0,
             stagger: {
                 each: 0.1,
