@@ -11,6 +11,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    z-index: 999999999;
 
     .header-logo {
         color: $sig-yellow;
@@ -29,8 +30,8 @@
         
         .header-nav-item {
             color: white;
-            font-family: montserrat;
-            font-weight: 100;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
             font-size: .8rem;
             padding: 6px 20px;
             cursor: pointer;

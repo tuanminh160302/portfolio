@@ -21,7 +21,7 @@ const Header = (props) => {
             y: 0,
             ease: 'power4.out',
             stagger: {
-                each: 0.1,
+                each: 0.06,
                 from: 'end'
             }
         })
@@ -30,7 +30,7 @@ const Header = (props) => {
             duration: .7,
             opacity: 1,
             stagger: {
-                each: 0.1,
+                each: 0.06,
                 from: 'end'
             }
         })
@@ -53,17 +53,18 @@ const Header = (props) => {
         gsap.to('.header-nav-item', {
             duration: 0.9,
             y: 200,
-            ease: 'power4.inOut',
+            ease: 'power4.in',
             stagger: {
-                each: 0.1,
+                each: 0.06,
                 from: 'start'
             }
         })
         gsap.to('.header-nav-item', {
-            duration: 0.7,
+            delay: .25,
+            duration: 0.75,
             opacity: 0,
             stagger: {
-                each: 0.1,
+                each: 0.06,
                 from: 'start'
             }
         })
