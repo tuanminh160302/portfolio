@@ -45,7 +45,7 @@
 
             &.smooth-hover:hover {
                 background-color: white;
-                color: black;
+                color: black !important;
                 transition: .3s ease-in;
             }
 

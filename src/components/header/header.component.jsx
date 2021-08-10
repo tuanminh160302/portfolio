@@ -74,13 +74,13 @@ const Header = (props) => {
         <div className='header'>
             <span className='header-logo'>steve</span>
             <div className='header-nav-container'>
-                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item`}>home</span>
-                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item`}>work</span>
-                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item`}>skills</span>
-                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item`}>resumé</span>
-                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item`}>contact</span>
-                <OpenIcon className='header-open' onClick={() => {handleMenuOpen()}}/>
-                <CloseIcon className='header-close' onClick={() => {handleMenuClose()}}/>
+                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>home</span>
+                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>work</span>
+                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>skills</span>
+                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>resumé</span>
+                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>contact</span>
+                <OpenIcon className='header-open apply-toggle' onClick={() => {handleMenuOpen()}}/>
+                <CloseIcon className='header-close apply-toggle' onClick={() => {handleMenuClose()}}/>
             </div>
         </div>
     )
