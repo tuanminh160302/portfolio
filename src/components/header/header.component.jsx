@@ -78,7 +78,7 @@ const Header = (props) => {
                 <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>work</span>
                 <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>skills</span>
                 <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>resumé</span>
-                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>contact</span>
+                {/* <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>contact</span> */}
                 <OpenIcon className='header-open apply-toggle' onClick={() => {handleMenuOpen()}}/>
                 <CloseIcon className='header-close apply-toggle' onClick={() => {handleMenuClose()}}/>
             </div>

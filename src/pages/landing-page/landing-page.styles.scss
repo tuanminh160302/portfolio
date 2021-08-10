@@ -1,10 +1,69 @@
 @import '../../assets/scss/ui-kit.scss';
 
+* { 
+    ::-webkit-scrollbar {
+        width: 8px;               /* width of the entire scrollbar */
+        background-color: transparent;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background-color: #333333;     /* color of the tracking area */
+        border: none;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background-color: $sig-yellow;    /* color of the scroll thumb */
+        border: none;
+        border-radius: 15px;
+    }
+}
+
 .landing-page {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+}
+
+.section-1-volume-mute {
+    fill: white;
+    position: fixed;
+    bottom: 5vh;
+    right: 10vw;
+    height: 3vh;
+    width: 3vh;
+    cursor: pointer;
+    transition: .3s;
+    z-index: 100;
+
+    #unmute {
+        opacity: 0;
+        transition: .3s;
+    }
+
+    &.unmute {
+        #unmute {
+            opacity: 1 !important;
+            transition: .3s;
+        }
+
+        #mute {
+            opacity: 0 !important;
+            transition: .3s;
+        }
+    }
+}
+
+.section-1-toggle {
+    position: fixed;
+    bottom: 5vh;
+    right: 5vw;
+    height: 3vh;
+    width: auto;
+    cursor: pointer;
+    transition: 0;
+    z-index: 100;
 }
 
 .landing-section-1 {
@@ -12,12 +71,12 @@
     width: 100vw;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-x: hidden;
     display: grid;
     grid-template-columns: 15vw 1fr 1fr 10vw;
     grid-template-rows: 2fr 0.8fr 1fr 1.25fr 3fr;
     position: relative;
-    background: black;
+    background: #333333;
 
     .section-1-background {
         height: 100%;
@@ -121,42 +180,17 @@
         transform-origin: left bottom;
         -webkit-transform-origin: left bottom;
     }
+}
 
-    .section-1-volume-mute {
-        fill: white;
-        position: fixed;
-        bottom: 5vh;
-        right: 10vw;
-        height: 3vh;
-        width: 3vh;
-        cursor: pointer;
-        transition: .3s;
+.landing-section-2 {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #333333;
+}
 
-        #unmute {
-            opacity: 0;
-            transition: .3s;
-        }
-
-        &.unmute {
-            #unmute {
-                opacity: 1 !important;
-                transition: .3s;
-            }
-
-            #mute {
-                opacity: 0 !important;
-                transition: .3s;
-            }
-        }
-    }
-    
-    .section-1-toggle {
-        position: fixed;
-        bottom: 5vh;
-        right: 5vw;
-        height: 3vh;
-        width: auto;
-        cursor: pointer;
-        transition: 0;
-    }
+.stage-1 { 
+    display: none !important; //temporary
 }
