@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './landing-page.styles.scss'
 
+import { connect } from 'react-redux';
+import { setToggle } from '../../redux/toggle/toggle.actions';
+
 import { ReactComponent as Blob } from '../../assets/svg/blob.svg';
 import { ReactComponent as VolumeMute } from '../../assets/svg/volume-mute.svg';
 import { ReactComponent as Toggle } from '../../assets/svg/toggle.svg';
@@ -18,18 +21,19 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger)
 
-const LandingPage = (props) => {
+const LandingPage = ({toggleClicked, setToggle}) => {
 
     const [buttonClicked, setButtonClicked] = useState(false)
     const [volumeClicked, setVolumeClicked] = useState(false)
-    const [toggleClicked, setToggleClicked] = useState(false)
+    // const [toggleClicked, setToggleClicked] = useState(false)
 
     const handleClickVolume = () => {
         setVolumeClicked(!volumeClicked)
     }
 
     const handleClickToggle = () => {
-        setToggleClicked(!toggleClicked)
+        // setToggleClicked(!toggleClicked)
+        setToggle()
     }
 
     const handleClickButton = () => {
@@ -175,4 +179,12 @@ const LandingPage = (props) => {
     )
 }
 
-export default LandingPage
+const mapStateToProps = ({toggle}) => ({
+    toggleClicked: toggle.toggle
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    setToggle: () => {dispatch(setToggle())}
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LandingPage)

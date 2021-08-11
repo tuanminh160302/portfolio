@@ -48,8 +48,12 @@
                 color: black !important;
                 transition: .3s ease-in;
             }
-
-
+            
+            &.toggle-clicked:hover {
+                background-color: black;
+                color: white !important;
+                transition: .3 ease-in;
+            }
         }
 
         .header-open {

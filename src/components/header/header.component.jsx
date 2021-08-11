@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './header.styles.scss';
+
+import { connect } from 'react-redux';
+
 import gsap from 'gsap'
 
 import { ReactComponent as CloseIcon } from '../../assets/svg/close-icon.svg'
 import { ReactComponent as OpenIcon } from '../../assets/svg/open-icon.svg'
 
-const Header = (props) => {
+const Header = ({toggleClicked}) => {
 
     const [smoothHover, setSmoothHover] = useState(false)
 
@@ -74,10 +77,10 @@ const Header = (props) => {
         <div className='header'>
             <span className='header-logo'>steve</span>
             <div className='header-nav-container'>
-                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>home</span>
-                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>work</span>
-                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>skills</span>
-                <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>resumé</span>
+                <span className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>home</span>
+                <span className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>work</span>
+                <span className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>skills</span>
+                <span className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>resumé</span>
                 {/* <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>contact</span> */}
                 <OpenIcon className='header-open apply-toggle' onClick={() => {handleMenuOpen()}}/>
                 <CloseIcon className='header-close apply-toggle' onClick={() => {handleMenuClose()}}/>
@@ -86,4 +89,8 @@ const Header = (props) => {
     )
 }
 
-export default Header
+const mapStateToProps = ({toggle}) => ({
+    toggleClicked: toggle.toggle
+})
+
+export default connect(mapStateToProps)(Header)

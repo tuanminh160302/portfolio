@@ -71,7 +71,7 @@
     width: 100vw;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow: hidden;
     display: grid;
     grid-template-columns: 15vw 1fr 1fr 10vw;
     grid-template-rows: 2fr 0.8fr 1fr 1.25fr 3fr;
@@ -159,7 +159,7 @@
         bottom: 15vh;
         right: 2.5%;
         z-index: 1000;
-        background-color: #FFB72C;
+        background-color: $sig-yellow;
         transform: scaleX(0) scaleY(0);
         -webkit-transform: scaleX(0) scaleY(.01);
         transform-origin: left bottom;
