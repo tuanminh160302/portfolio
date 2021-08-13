@@ -57,9 +57,8 @@ const LandingPage = ({ toggleClicked, setToggle }) => {
     }
 
     const handleClickNextIcon = (e) => {
-        console.log(e.target.className)
-        // const panelDetailsNum = e.target.className.slice(-1)
-        // setPanelDetails(panelDetailsNum)
+        const panelDetailsNum = e.target.className.baseVal.slice(-1)
+        setPanelDetails(panelDetailsNum)
         gsap.to('.section-1-fav-details', { duration: 1.2, scaleX: 1, ease: 'power4.inOut'})
     }
 
