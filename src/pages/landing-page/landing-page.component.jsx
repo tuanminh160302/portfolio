@@ -10,7 +10,12 @@ import { ReactComponent as Toggle } from '../../assets/svg/toggle.svg';
 import { ReactComponent as GithubIcon } from '../../assets/svg/github.svg';
 import { ReactComponent as GmailIcon } from '../../assets/svg/gmail.svg';
 import { ReactComponent as LinkedinIcon } from '../../assets/svg/linkedin.svg';
+import { ReactComponent as FavIcon1 } from '../../assets/svg/fav-panel-1.svg';
+import { ReactComponent as FavIcon2 } from '../../assets/svg/fav-panel-2.svg';
+import { ReactComponent as FavIcon3 } from '../../assets/svg/fav-panel-3.svg';
+import { ReactComponent as NextIcon } from '../../assets/svg/next-icon.svg';
 
+import Gif from '../../assets/img/gif.gif'
 import Avt from '../../assets/img/avt.jpg'
 import Hands from '../../assets/img/hands-emoji.png'
 
@@ -19,12 +24,14 @@ import Panel from '../../components/panel/panel.component';
 
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { Fragment } from 'react';
 gsap.registerPlugin(ScrollTrigger)
 
-const LandingPage = ({toggleClicked, setToggle}) => {
+const LandingPage = ({ toggleClicked, setToggle }) => {
 
     const [buttonClicked, setButtonClicked] = useState(false)
     const [volumeClicked, setVolumeClicked] = useState(false)
+    const [panelDetails, setPanelDetails] = useState(0)
     // const [toggleClicked, setToggleClicked] = useState(false)
 
     const handleClickVolume = () => {
@@ -47,6 +54,13 @@ const LandingPage = ({toggleClicked, setToggle}) => {
             .to('.section-1-panel', { scaleX: .8, duration: 1, ease: 'power4.inOut' }, 1.55)
             .to('.section-1-blob', { duration: .7, opacity: 0, ease: 'power4.out' }, .9)
         buttonClickTl.pause()
+    }
+
+    const handleClickNextIcon = (e) => {
+        console.log(e.target.className)
+        // const panelDetailsNum = e.target.className.slice(-1)
+        // setPanelDetails(panelDetailsNum)
+        gsap.to('.section-1-fav-details', { duration: 1.2, scaleX: 1, ease: 'power4.inOut'})
     }
 
     useEffect(() => {
@@ -104,6 +118,7 @@ const LandingPage = ({toggleClicked, setToggle}) => {
             .to('.section-1-slogan-2', { opacity: 0 })
             .to('.section-1-button', { opacity: 0 })
             .to('.section-1-blob', { duration: .7, opacity: 0, ease: 'power4.out' })
+            .to('.stage-1', { display: 'none' })
             .to('.section-1-panel-2', { scaleX: 0, duration: .8, ease: 'power4.inOut' })
             .to('.section-1-panel', { scaleX: 1, duration: .8, ease: 'power4.inOut' })
             .to('.section-1-intro-h1', { opacity: 1 })
@@ -120,8 +135,11 @@ const LandingPage = ({toggleClicked, setToggle}) => {
             .to('.section-1-panel', { scaleY: 1, duration: 1.2, ease: 'power4.out' })
             .to('.section-1-panel', { x: '100%', duration: 2, ease: 'power4.out' })
             .to('.section-1-panel', { transformOrigin: 'right bottom', duration: 0 })
+            .to('.stage-2', { display: 'none' })
             .to('.section-1-avt', { duration: 0, opacity: 0, y: '150px' })
-            .to('.section-1-panel', { scaleX: .8, duration: 1, ease: 'power4.inOut' })
+            .to('.section-1-panel', { scaleX: .65, duration: 1, ease: 'power4.inOut' })
+            .to('.section-1-gif', { opacity: 1 })
+            .to('.section-1-panel', { background: 'black' })
 
         // let scrollTl2 = gsap.timeline({
         //     scrollTrigger: {
@@ -142,7 +160,7 @@ const LandingPage = ({toggleClicked, setToggle}) => {
                 <span className='section-1-slogan-2 apply-toggle stage-1'>that has a <span className='slogan-2-sig'>&nbsp;passion</span> &nbsp;for&nbsp;&nbsp;&nbsp;<span className='slogan-2-diff apply-toggle'>design</span></span>
                 <Button onClick={() => { handleClickButton() }} className='section-1-button stage-1' content='contact me' />
                 <Blob className='section-1-blob stage-1' />
-                <Panel className='section-1-panel ' />
+                <Panel className='section-1-panel ' content={<img className='section-1-gif' src={Gif} alt="" />} />
                 <Panel className='section-1-panel-2 apply-toggle' />
 
                 {/* STAGE 2 */}
@@ -171,20 +189,53 @@ const LandingPage = ({toggleClicked, setToggle}) => {
                     </a>
                 </div>
 
-            </section>
-            <section className='landing-section-2'>
+                {/* {STAGE 3} */}
+                <span className='section-1-fav-1 apply-toggle stage-3'>I love to <span className='fav-1-sig'>&nbsp;create</span></span>
+                <div className='section-1-fav-panel-container stage-3'>
+                    <Panel className='section-1-fav-panel fav-panel-1' content={
+                        <Fragment>
+                            <FavIcon1 className='fav-panel-icon' />
+                            <span className='fav-panel-text'>pixel-perfect web applications</span>
+                            <NextIcon className='fav-panel-next next-1' onClick={(e) => {handleClickNextIcon(e)}}/>
+                        </Fragment>
+                    } />
+                    <Panel className='section-1-fav-panel fav-panel-2' content={
+                        <Fragment>
+                            <FavIcon2 className='fav-panel-icon' />
+                            <span className='fav-panel-text'>sleek animations</span>
+                            <NextIcon className='fav-panel-next next-2' onClick={(e) => {handleClickNextIcon(e)}}/>
+                        </Fragment>
+                    } />
+                    <Panel className='section-1-fav-panel fav-panel-3' content={
+                        <Fragment>
+                            <FavIcon3 className='fav-panel-icon' />
+                            <span className='fav-panel-text'>robust design prototypes</span>
+                            <NextIcon className='fav-panel-next next-3' onClick={(e) => {handleClickNextIcon(e)}}/>
+                        </Fragment>
+                    } />
+                </div>
+                <Button className='section-1-fav-button stage-3' content='find out more' />
 
+                <div className='section-1-fav-details stage-3'>
+                    <span className={`${panelDetails === '1' ? 'details-should-display' : 'details-should-hide'} fav-details`}>1</span>
+                    <span className={`${panelDetails === '2' ? 'details-should-display' : 'details-should-hide'} fav-details`}>2</span>
+                    <span className={`${panelDetails === '3' ? 'details-should-display' : 'details-should-hide'} fav-details`}>3</span>
+                </div>
             </section>
+
+            {/* <section className='landing-section-2'>
+
+            </section> */}
         </div>
     )
 }
 
-const mapStateToProps = ({toggle}) => ({
+const mapStateToProps = ({ toggle }) => ({
     toggleClicked: toggle.toggle
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    setToggle: () => {dispatch(setToggle())}
+    setToggle: () => { dispatch(setToggle()) }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingPage)

@@ -1,9 +1,9 @@
 import React from 'react';
 import './panel.styles.scss';
 
-const Panel = ({ className }) => {
+const Panel = ({ className, content }) => {
     return (
-        <div className={`panel ${className}`}></div>
+        <div className={`panel ${className}`}>{content}</div>
     )
 }
 
