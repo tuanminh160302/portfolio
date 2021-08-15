@@ -22,12 +22,18 @@ import Hands from '../../assets/img/hands-emoji.png'
 import Button from '../../components/button/button.component';
 import Panel from '../../components/panel/panel.component';
 
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import { gsap } from 'gsap'
+import { CustomEase } from 'gsap/CustomEase';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Fragment } from 'react';
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger, CustomEase)
 
 const LandingPage = ({ toggleClicked, setToggle }) => {
+
+    useEffect(() => {
+        CustomEase.create('slide', "M0,0 C0.29,0 0.345,0.015 0.416,0.1 0.485,0.183 0.478,0.358 0.498,0.502 0.512,0.602 0.517,0.794 0.58,0.888 0.655,0.999 0.704,1 1,1 ")
+        console.log('page done loading')
+    }, [])
 
     const [buttonClicked, setButtonClicked] = useState(false)
     const [volumeClicked, setVolumeClicked] = useState(false)
@@ -59,7 +65,21 @@ const LandingPage = ({ toggleClicked, setToggle }) => {
     const handleClickNextIcon = (e) => {
         const panelDetailsNum = e.target.className.baseVal.slice(-1)
         setPanelDetails(panelDetailsNum)
-        gsap.to('.section-1-fav-details', { duration: 1.2, scaleX: 1, ease: 'power4.inOut'})
+
+        let favDetailsTl = gsap.timeline()
+        favDetailsTl.to('.section-1-fav-details', { duration: 1.5, scaleX: 1, ease: 'slide' })
+                    .to('.landing-section-1', { duration: 1.5, scale: 1.05, webkitFilter: 'blur(4px)', ease: 'power4.inOut' }, .01)
+                    .to('.landing-section-1', { pointerEvents: 'none' }, 1)
+                    .to('html', { overflow: 'hidden' }, .01)
+                    .to('.fav-details-panel', { duration: 1.2, scaleX: 1, ease: 'slide'}, .6)
+                    .from('.fav-details-panel-item', { 
+                        opacity: 0, 
+                        x: '-50px', 
+                        ease: 'power4.out',
+                        duration: .75,
+                        stagger: {
+                            each: .15
+                        }}, 1.35)
     }
 
     useEffect(() => {
@@ -151,6 +171,19 @@ const LandingPage = ({ toggleClicked, setToggle }) => {
 
     return (
         <div className='landing-page'>
+            <div className='section-1-fav-details stage-3'>
+                <div className={`${panelDetails === '1' ? 'details-should-display' : 'details-should-hide'} fav-details`}>
+                    <Panel className='fav-details-panel' content={
+                        <Fragment>
+                            <span className='fav-details-panel-text fav-details-panel-item'>Main focus</span>
+                            <div className='fav-details-panel-icons-con fav-details-panel-item'></div>
+                        </Fragment>
+                    }>
+                    </Panel>
+                </div>
+                <span className={`${panelDetails === '2' ? 'details-should-display' : 'details-should-hide'} fav-details`}>2</span>
+                <span className={`${panelDetails === '3' ? 'details-should-display' : 'details-should-hide'} fav-details`}>3</span>
+            </div>
             <VolumeMute className={`${volumeClicked ? 'unmute' : null} section-1-volume-mute`} onClick={() => handleClickVolume()} />
             <Toggle className='section-1-toggle' onClick={() => handleClickToggle()} />
             <section className='landing-section-1'>
@@ -195,31 +228,27 @@ const LandingPage = ({ toggleClicked, setToggle }) => {
                         <Fragment>
                             <FavIcon1 className='fav-panel-icon' />
                             <span className='fav-panel-text'>pixel-perfect web applications</span>
-                            <NextIcon className='fav-panel-next next-1' onClick={(e) => {handleClickNextIcon(e)}}/>
+                            <NextIcon className='fav-panel-next next-1' onClick={(e) => { handleClickNextIcon(e) }} />
                         </Fragment>
                     } />
                     <Panel className='section-1-fav-panel fav-panel-2' content={
                         <Fragment>
                             <FavIcon2 className='fav-panel-icon' />
                             <span className='fav-panel-text'>sleek animations</span>
-                            <NextIcon className='fav-panel-next next-2' onClick={(e) => {handleClickNextIcon(e)}}/>
+                            <NextIcon className='fav-panel-next next-2' onClick={(e) => { handleClickNextIcon(e) }} />
                         </Fragment>
                     } />
                     <Panel className='section-1-fav-panel fav-panel-3' content={
                         <Fragment>
                             <FavIcon3 className='fav-panel-icon' />
                             <span className='fav-panel-text'>robust design prototypes</span>
-                            <NextIcon className='fav-panel-next next-3' onClick={(e) => {handleClickNextIcon(e)}}/>
+                            <NextIcon className='fav-panel-next next-3' onClick={(e) => { handleClickNextIcon(e) }} />
                         </Fragment>
                     } />
                 </div>
                 <Button className='section-1-fav-button stage-3' content='find out more' />
 
-                <div className='section-1-fav-details stage-3'>
-                    <span className={`${panelDetails === '1' ? 'details-should-display' : 'details-should-hide'} fav-details`}>1</span>
-                    <span className={`${panelDetails === '2' ? 'details-should-display' : 'details-should-hide'} fav-details`}>2</span>
-                    <span className={`${panelDetails === '3' ? 'details-should-display' : 'details-should-hide'} fav-details`}>3</span>
-                </div>
+
             </section>
 
             {/* <section className='landing-section-2'>
