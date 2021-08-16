@@ -14,6 +14,7 @@ import { ReactComponent as FavIcon1 } from '../../assets/svg/fav-panel-1.svg';
 import { ReactComponent as FavIcon2 } from '../../assets/svg/fav-panel-2.svg';
 import { ReactComponent as FavIcon3 } from '../../assets/svg/fav-panel-3.svg';
 import { ReactComponent as NextIcon } from '../../assets/svg/next-icon.svg';
+import { ReactComponent as CloseIconLine} from '../../assets/svg/close-icon-line.svg'
 
 import {ICON_DATA_WEB, ICON_DATA_ANIM, ICON_DATA_DES} from '../../assets/data/icon.data';
 
@@ -69,35 +70,52 @@ const LandingPage = ({ toggleClicked, setToggle }) => {
         setPanelDetails(panelDetailsNum)
 
         let favDetailsTl = gsap.timeline()
-        favDetailsTl.to('.section-1-fav-details', { duration: 1.5, scaleX: 1, ease: 'slide' })
+        favDetailsTl.to('.landing-section-1', { pointerEvents: 'none' })
+                    .to('.fav-details-close', { duration: 0, pointerEvents: 'auto'}, 3)
+                    .to('.section-1-fav-details', { duration: 1.5, scaleX: 1, ease: 'slide' }, .01)
                     .to('.landing-section-1', { duration: 1.5, scale: 1.05, webkitFilter: 'blur(4px)', ease: 'power4.inOut' }, .01)
-                    .to('.landing-section-1', { pointerEvents: 'none' }, 1)
-                    .to('html body', { overflow: 'hidden' }, .01)
+                    .to('body', { overflow: 'hidden' }, .01)
                     .to('.fav-details-panel', { duration: 1.2, scaleX: 1, ease: 'slide'}, .6)
-                    .from('.fav-details-panel-items-set-1', { 
-                        opacity: 0, 
-                        x: '-50px', 
+                    .to('.fav-details-panel-items-set-1', { 
+                        opacity: 1, 
+                        x: '0px', 
                         ease: 'power4.out',
                         duration: .75,
                         stagger: {
                             each: .15
                         }}, 1.35)
-                    .from('.fav-details-panel-items-set-2', { 
-                        opacity: 0, 
-                        x: '-50px', 
+                    .to('.fav-details-panel-items-set-2', { 
+                        opacity: 1, 
+                        x: '0px', 
                         ease: 'power4.out',
                         duration: .75,
                         stagger: {
                             each: .15
                         }}, 1.35)
-                    .from('.fav-details-panel-items-set-3', { 
-                        opacity: 0, 
-                        x: '-50px', 
+                    .to('.fav-details-panel-items-set-3', { 
+                        opacity: 1, 
+                        x: '0px', 
                         ease: 'power4.out',
                         duration: .75,
                         stagger: {
                             each: .15
                         }}, 1.35)
+    }
+
+    const handleClickFavClose = () => {
+        let favDetailsTl = gsap.timeline()
+        favDetailsTl.to('.fav-details-close', { duration: 0, pointerEvents: 'none'})
+                    .to('.fav-details-panel-items-set-1', { opacity: 0, duration: .3,}, .01)
+                    .to('.fav-details-panel-items-set-2', { opacity: 0, duration: .3,}, .01)
+                    .to('.fav-details-panel-items-set-3', { opacity: 0, duration: .3,}, .01)
+                    .to('.fav-details-panel-items-set-1', { x: '-50px', duration: 0,}, 1)
+                    .to('.fav-details-panel-items-set-2', { x: '-50px', duration: 0,}, 1)
+                    .to('.fav-details-panel-items-set-3', { x: '-50px', duration: 0,}, 1)
+                    .to('.fav-details-panel', { duration: 1.2, scaleX: 0, ease: 'slide'}, .01)
+                    .to('.section-1-fav-details', { duration: 1.5, scaleX: 0, ease: 'slide' }, .5)
+                    .to('.landing-section-1', { duration: 1.5, scale: 1, webkitFilter: 'blur(0px)', ease: 'power4.inOut' }, .5)
+                    .to('.landing-section-1', { pointerEvents: 'auto' }, 1.5)
+                    .to('body', { overflow: 'visible' }, 2)
     }
 
     useEffect(() => {
@@ -170,11 +188,19 @@ const LandingPage = ({ toggleClicked, setToggle }) => {
             .to('.section-1-intro-p-2', { opacity: 0 })
             .to('.stage-2', { pointerEvents: 'none' })
             .to('.section-1-panel', { scaleY: 1, duration: 1.2, ease: 'power4.out' })
-            .to('.section-1-panel', { x: '100%', duration: 2, ease: 'power4.out' })
+            .to('.section-1-panel', { x: '100%', duration: 1.3, ease: 'power4.out' })
             .to('.section-1-panel', { transformOrigin: 'right bottom', duration: 0 })
             .to('.stage-2', { display: 'none' })
             .to('.section-1-avt', { duration: 0, opacity: 0, y: '150px' })
             .to('.section-1-panel', { scaleX: .65, duration: 1, ease: 'power4.inOut' })
+            .to('.stage-3', {
+                y: '0px',
+                opacity: 1,
+                pointerEvents: 'auto',
+                stagger: {
+                    each: .2
+                }
+            })
             .to('.section-1-gif', { opacity: 1 })
             .to('.section-1-panel', { background: 'black' })
 
@@ -189,7 +215,7 @@ const LandingPage = ({ toggleClicked, setToggle }) => {
 
     return (
         <div className='landing-page'>
-            <div className='section-1-fav-details stage-3'>
+            <div className='section-1-fav-details'>
                 <div className={`${panelDetails === '1' ? 'details-should-display' : 'details-should-hide'} fav-details`}>
                     <Panel className='fav-details-panel' content={
                         <Fragment>
@@ -203,6 +229,7 @@ const LandingPage = ({ toggleClicked, setToggle }) => {
                         </Fragment>
                     }>
                     </Panel>
+                    <CloseIconLine onClick={() => {handleClickFavClose()}} className='fav-details-close fav-details-panel-items-set-1'/>
                 </div>
                 <div className={`${panelDetails === '2' ? 'details-should-display' : 'details-should-hide'} fav-details`}>
                     <Panel className='fav-details-panel' content={
@@ -217,6 +244,7 @@ const LandingPage = ({ toggleClicked, setToggle }) => {
                         </Fragment>
                     }>
                     </Panel>
+                    <CloseIconLine onClick={() => {handleClickFavClose()}} className='fav-details-close fav-details-panel-items-set-2'/>
                 </div>
                 <div className={`${panelDetails === '3' ? 'details-should-display' : 'details-should-hide'} fav-details`}>
                     <Panel className='fav-details-panel' content={
@@ -231,8 +259,10 @@ const LandingPage = ({ toggleClicked, setToggle }) => {
                         </Fragment>
                     }>
                     </Panel>
+                    <CloseIconLine onClick={() => {handleClickFavClose()}} className='fav-details-close fav-details-panel-items-set-3'/>
                 </div>
             </div>
+
             <VolumeMute className={`${volumeClicked ? 'unmute' : null} section-1-volume-mute`} onClick={() => handleClickVolume()} />
             <Toggle className='section-1-toggle' onClick={() => handleClickToggle()} />
             <section className='landing-section-1'>
