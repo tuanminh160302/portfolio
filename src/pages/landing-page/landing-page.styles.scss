@@ -513,27 +513,43 @@
             flex-direction: column;
 
             .fav-details-panel-text {
-                margin: 20% 0 0 15%;
+                margin: 25% 0 0 15%;
                 font-family: 'Montserrat', sans-serif;
                 font-weight: 400;
-                font-size: 1.5rem;
+                font-size: 1.6rem;
                 color: white;
             }
 
             .fav-details-panel-icons-con {
-                margin: 3vh 0 0 15%;
-                height: 15vh;
-                width: 30vh;
-                background: red;
+                margin: 1.5vh 0 0 15%;
+                height: fit-content;
+                width: 24vh;
+                display: flex;
+                flex-wrap: wrap;
+
+                .fav-details-panel-icon {
+                    height: 4vh;
+                    width: 4vh;
+                    margin: 1.25vh 2vh 1.25vh 0;
+                }
+            }
+
+            .fav-details-panel-button {
+                position: static;
+                height: fit-content;
+                width: fit-content;
+                margin: 7vh 0 0 15%;
+                border-radius: 25px;
+
             }
         }
 
         &.details-should-display {
-            opacity: 1;
+            display: flex;
         }
 
         &.details-should-hide {
-            opacity: 0;
+            display: none;
         }
     } 
 }

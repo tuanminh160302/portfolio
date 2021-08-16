@@ -15,6 +15,8 @@ import { ReactComponent as FavIcon2 } from '../../assets/svg/fav-panel-2.svg';
 import { ReactComponent as FavIcon3 } from '../../assets/svg/fav-panel-3.svg';
 import { ReactComponent as NextIcon } from '../../assets/svg/next-icon.svg';
 
+import {ICON_DATA_WEB, ICON_DATA_ANIM, ICON_DATA_DES} from '../../assets/data/icon.data';
+
 import Gif from '../../assets/img/gif.gif'
 import Avt from '../../assets/img/avt.jpg'
 import Hands from '../../assets/img/hands-emoji.png'
@@ -70,9 +72,25 @@ const LandingPage = ({ toggleClicked, setToggle }) => {
         favDetailsTl.to('.section-1-fav-details', { duration: 1.5, scaleX: 1, ease: 'slide' })
                     .to('.landing-section-1', { duration: 1.5, scale: 1.05, webkitFilter: 'blur(4px)', ease: 'power4.inOut' }, .01)
                     .to('.landing-section-1', { pointerEvents: 'none' }, 1)
-                    .to('html', { overflow: 'hidden' }, .01)
+                    .to('html body', { overflow: 'hidden' }, .01)
                     .to('.fav-details-panel', { duration: 1.2, scaleX: 1, ease: 'slide'}, .6)
-                    .from('.fav-details-panel-item', { 
+                    .from('.fav-details-panel-items-set-1', { 
+                        opacity: 0, 
+                        x: '-50px', 
+                        ease: 'power4.out',
+                        duration: .75,
+                        stagger: {
+                            each: .15
+                        }}, 1.35)
+                    .from('.fav-details-panel-items-set-2', { 
+                        opacity: 0, 
+                        x: '-50px', 
+                        ease: 'power4.out',
+                        duration: .75,
+                        stagger: {
+                            each: .15
+                        }}, 1.35)
+                    .from('.fav-details-panel-items-set-3', { 
                         opacity: 0, 
                         x: '-50px', 
                         ease: 'power4.out',
@@ -175,14 +193,45 @@ const LandingPage = ({ toggleClicked, setToggle }) => {
                 <div className={`${panelDetails === '1' ? 'details-should-display' : 'details-should-hide'} fav-details`}>
                     <Panel className='fav-details-panel' content={
                         <Fragment>
-                            <span className='fav-details-panel-text fav-details-panel-item'>Main focus</span>
-                            <div className='fav-details-panel-icons-con fav-details-panel-item'></div>
+                            <span className='fav-details-panel-text fav-details-panel-items-set-1'>Main focus</span>
+                            <div className='fav-details-panel-icons-con fav-details-panel-items-set-1'>
+                                {ICON_DATA_WEB.map((icon) => (
+                                    <img key={icon.id} className='fav-details-panel-icon fav-details-panel-items-set-1' src={icon.src} alt={icon.name}/>
+                                ))}
+                            </div>
+                            <Button className='fav-details-panel-button fav-details-panel-items-set-1' content='See all skills'/>
                         </Fragment>
                     }>
                     </Panel>
                 </div>
-                <span className={`${panelDetails === '2' ? 'details-should-display' : 'details-should-hide'} fav-details`}>2</span>
-                <span className={`${panelDetails === '3' ? 'details-should-display' : 'details-should-hide'} fav-details`}>3</span>
+                <div className={`${panelDetails === '2' ? 'details-should-display' : 'details-should-hide'} fav-details`}>
+                    <Panel className='fav-details-panel' content={
+                        <Fragment>
+                            <span className='fav-details-panel-text fav-details-panel-items-set-2'>Main focus</span>
+                            <div className='fav-details-panel-icons-con fav-details-panel-items-set-2'>
+                                {ICON_DATA_ANIM.map((icon) => (
+                                    <img key={icon.id} className='fav-details-panel-icon fav-details-panel-items-set-2' src={icon.src} alt={icon.name}/>
+                                ))}
+                            </div>
+                            <Button className='fav-details-panel-button fav-details-panel-items-set-2' content='See all skills'/>
+                        </Fragment>
+                    }>
+                    </Panel>
+                </div>
+                <div className={`${panelDetails === '3' ? 'details-should-display' : 'details-should-hide'} fav-details`}>
+                    <Panel className='fav-details-panel' content={
+                        <Fragment>
+                            <span className='fav-details-panel-text fav-details-panel-items-set-3'>Main focus</span>
+                            <div className='fav-details-panel-icons-con fav-details-panel-items-set-3'>
+                                {ICON_DATA_DES.map((icon) => (
+                                    <img key={icon.id} className='fav-details-panel-icon fav-details-panel-items-set-3' src={icon.src} alt={icon.name}/>
+                                ))}
+                            </div>
+                            <Button className='fav-details-panel-button fav-details-panel-items-set-3' content='See all skills'/>
+                        </Fragment>
+                    }>
+                    </Panel>
+                </div>
             </div>
             <VolumeMute className={`${volumeClicked ? 'unmute' : null} section-1-volume-mute`} onClick={() => handleClickVolume()} />
             <Toggle className='section-1-toggle' onClick={() => handleClickToggle()} />
