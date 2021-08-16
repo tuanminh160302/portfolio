@@ -132,6 +132,9 @@ const LandingPage = ({ toggleClicked, setToggle }) => {
             .to('.section-1-github-icon', { duration: .2, fill: 'white' }, .01)
             .to('.section-1-gmail-icon', { duration: .2, fill: 'white' }, .01)
             .to('.section-1-linkedin-icon', { duration: .2, fill: 'white' }, .01)
+            .to('.section-1-github-icon-container', { duration: .2, border: '1px solid rgba(0, 0, 0, 0.2)'})
+            .to('.section-1-gmail-icon-container', { duration: .2, border: '1px solid rgba(0, 0, 0, 0.2)'})
+            .to('.section-1-linkedin-icon-container', { duration: .2, border: '1px solid rgba(0, 0, 0, 0.2)'})
         toggleTl.pause()
 
         let toggleTlRev = gsap.timeline()
@@ -147,6 +150,9 @@ const LandingPage = ({ toggleClicked, setToggle }) => {
             .to('.section-1-github-icon', { duration: .2, fill: 'black' }, .01)
             .to('.section-1-gmail-icon', { duration: .2, fill: '#CC3D2F' }, .01)
             .to('.section-1-linkedin-icon', { duration: .2, fill: '#0A66C2' }, .01)
+            .to('.section-1-github-icon-container', { duration: .2, border: '1px solid rgba(255, 255, 255, 0.2)'})
+            .to('.section-1-gmail-icon-container', { duration: .2, border: '1px solid rgba(255, 255, 255, 0.2)'})
+            .to('.section-1-linkedin-icon-container', { duration: .2, border: '1px solid rgba(255, 255, 255, 0.2)'})
         toggleTlRev.pause()
 
         toggleClicked ?
