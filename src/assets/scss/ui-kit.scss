@@ -1,5 +1,6 @@
 $sig-yellow: #D79922;
 $sig-cyan: #00C2FF;
+$sig-dark: #333333;
 
 // @font-face {
 //     font-family: 'montserrat';
@@ -10,6 +11,25 @@ $sig-cyan: #00C2FF;
 //     font-family: 'montserrat-italic';
 //     src: url(../fonts/montserrat/Montserrat-Italic-VF.ttf);
 // }
+
+
+* { 
+    ::-webkit-scrollbar {
+        width: 8px;               /* width of the entire scrollbar */
+        background-color: transparent;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background-color: $sig-dark;     /* color of the tracking area */
+        border: none;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background-color: $sig-yellow;    /* color of the scroll thumb */
+        border: none;
+        border-radius: 15px;
+    }
+}
 
 @font-face {
     font-family: 'playfair';

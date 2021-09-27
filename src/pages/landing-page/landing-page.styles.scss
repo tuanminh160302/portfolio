@@ -1,23 +1,5 @@
 @import '../../assets/scss/ui-kit.scss';
 
-* { 
-    ::-webkit-scrollbar {
-        width: 8px;               /* width of the entire scrollbar */
-        background-color: transparent;
-    }
-    
-    ::-webkit-scrollbar-track {
-        background-color: #333333;     /* color of the tracking area */
-        border: none;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-        background-color: $sig-yellow;    /* color of the scroll thumb */
-        border: none;
-        border-radius: 15px;
-    }
-}
-
 .landing-page {
     height: 100%;
     width: 100%;

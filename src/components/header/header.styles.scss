@@ -27,6 +27,10 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+
+        a {
+            text-decoration: none
+        }
         
         .header-nav-item {
             color: white;

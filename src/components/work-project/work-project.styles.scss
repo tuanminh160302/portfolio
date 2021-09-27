@@ -1,0 +1,17 @@
+@import '../../assets/scss/ui-kit.scss';
+
+.work-project {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 12.5vh 0 0 0;
+    background-color: $sig-dark;
+    display: flex;
+    justify-content: center;
+
+    .project-content {
+        height: 80vh;
+        width: 75vw;
+        background-color: gray;
+    }
+}

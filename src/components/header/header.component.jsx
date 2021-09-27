@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './header.styles.scss';
 
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import gsap from 'gsap'
 
@@ -77,10 +78,10 @@ const Header = ({toggleClicked}) => {
         <div className='header'>
             <span className='header-logo'>steve</span>
             <div className='header-nav-container'>
-                <span className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>home</span>
-                <span className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>work</span>
-                <span className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>skills</span>
-                <span className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>resumé</span>
+                <Link to='/' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>home</Link>
+                <Link to='/work' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>work</Link>
+                <Link className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>skills</Link>
+                <Link className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>resumé</Link>
                 {/* <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>contact</span> */}
                 <OpenIcon className='header-open apply-toggle' onClick={() => {handleMenuOpen()}}/>
                 <CloseIcon className='header-close apply-toggle' onClick={() => {handleMenuClose()}}/>
