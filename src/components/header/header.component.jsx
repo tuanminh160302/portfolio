@@ -80,8 +80,8 @@ const Header = ({toggleClicked}) => {
             <div className='header-nav-container'>
                 <Link to='/' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>home</Link>
                 <Link to='/work' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>work</Link>
-                <Link className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>skills</Link>
-                <Link className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>resumé</Link>
+                <Link to='/' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>skills</Link>
+                <Link to='/' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>resumé</Link>
                 {/* <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>contact</span> */}
                 <OpenIcon className='header-open apply-toggle' onClick={() => {handleMenuOpen()}}/>
                 <CloseIcon className='header-close apply-toggle' onClick={() => {handleMenuClose()}}/>
