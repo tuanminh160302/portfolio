@@ -6,7 +6,7 @@ import DottedBackground from '../dotted-background/dotted-background.component';
 
 
 
-const WorkProject = ({ name, description, skills, webURL, pics }) => {
+const WorkProject = ({ runOnce, name, description, skills, webURL, pics }) => {
     return (
         <div className='work-project'>
             <div className='project-content'>
@@ -24,7 +24,7 @@ const WorkProject = ({ name, description, skills, webURL, pics }) => {
                     <span className='project-title'>{webURL}</span>
                 </div>
                 <div className='project-pics-container'>
-                    <DottedBackground></DottedBackground>
+                    <DottedBackground runOnce={runOnce}></DottedBackground>
                 </div>
             </div>
         </div>

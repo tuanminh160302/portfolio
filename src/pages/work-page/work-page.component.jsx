@@ -13,6 +13,7 @@ const WorkPage = () => {
                 {PROJECT_DATA.map((project) => (
                     <WorkProject 
                         key={project.id} 
+                        runOnce={project.runOnce}
                         name={project.name} 
                         description={project.description}
                         skills={project.skills}
