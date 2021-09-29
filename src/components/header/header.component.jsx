@@ -82,6 +82,7 @@ const Header = ({toggleClicked}) => {
                 <Link to='/work' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>work</Link>
                 <Link to='/' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>skills</Link>
                 <Link to='/' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>resumé</Link>
+                <Link to='/' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>contact</Link>
                 {/* <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>contact</span> */}
                 <OpenIcon className='header-open apply-toggle' onClick={() => {handleMenuOpen()}}/>
                 <CloseIcon className='header-close apply-toggle' onClick={() => {handleMenuClose()}}/>

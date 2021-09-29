@@ -8,9 +8,27 @@ export const PROJECT_DATA = [
         runOnce: true,
         name: 'project 1',
         description: 'Replace this paragraph with the description of the project, especially important key details. Replace this paragraph with the description of the project, especially important key details.',
-        skills: [web[0], web[1], web[2]], //html, css, js
+        skills: [web[0], web[1], web[2], web[3]], //html, css, js
         webURL: 'nnhafff.com',
-        pics: ['url1', 'url2', 'url3']
+        pics: [
+            {
+                id: 1,
+                url: 'https://i.imgur.com/DnJihER.jpg',
+                name: 'pic 1'
+            },
+
+            {
+                id: 2,
+                url: 'https://i.imgur.com/dwNM6UT.jpg',
+                name: 'pic 2'
+            },
+
+            {
+                id: 3,
+                url: 'https://i.imgur.com/rBqqY3l.jpg',
+                name: 'pic 3'
+            },
+        ]
     },
 
     {
@@ -20,7 +38,25 @@ export const PROJECT_DATA = [
         description: 'Replace this paragraph with the description of the project, especially important key details. Replace this paragraph with the description of the project, especially important key details.',
         skills: [web[0], web[1], web[2]], //html, css, js
         webURL: 'nnhafff.com',
-        pics: ['url1', 'url2', 'url3']
+        pics: [
+            {
+                id: 1,
+                url: 'https://i.imgur.com/DnJihER.jpg',
+                name: 'pic 1'
+            },
+
+            {
+                id: 2,
+                url: 'https://i.imgur.com/dwNM6UT.jpg',
+                name: 'pic 2'
+            },
+
+            {
+                id: 3,
+                url: 'https://i.imgur.com/rBqqY3l.jpg',
+                name: 'pic 3'
+            },
+        ]
     },
 
     {
@@ -30,7 +66,25 @@ export const PROJECT_DATA = [
         description: 'Replace this paragraph with the description of the project, especially important key details. Replace this paragraph with the description of the project, especially important key details.',
         skills: [web[0], web[1], web[2]], //html, css, js
         webURL: 'nnhafff.com',
-        pics: ['url1', 'url2', 'url3']
+        pics: [
+            {
+                id: 1,
+                url: 'https://i.imgur.com/DnJihER.jpg',
+                name: 'pic 1'
+            },
+
+            {
+                id: 2,
+                url: 'https://i.imgur.com/dwNM6UT.jpg',
+                name: 'pic 2'
+            },
+
+            {
+                id: 3,
+                url: 'https://i.imgur.com/rBqqY3l.jpg',
+                name: 'pic 3'
+            },
+        ]
     },
 
     {
@@ -40,7 +94,25 @@ export const PROJECT_DATA = [
         description: 'Replace this paragraph with the description of the project, especially important key details. Replace this paragraph with the description of the project, especially important key details.',
         skills: [web[0], web[1], web[2]], //html, css, js
         webURL: 'nnhafff.com',
-        pics: ['url1', 'url2', 'url3']
+        pics: [
+            {
+                id: 1,
+                url: 'https://i.imgur.com/DnJihER.jpg',
+                name: 'pic 1'
+            },
+
+            {
+                id: 2,
+                url: 'https://i.imgur.com/dwNM6UT.jpg',
+                name: 'pic 2'
+            },
+
+            {
+                id: 3,
+                url: 'https://i.imgur.com/rBqqY3l.jpg',
+                name: 'pic 3'
+            },
+        ]
     },
 
     {
@@ -50,6 +122,24 @@ export const PROJECT_DATA = [
         description: 'Replace this paragraph with the description of the project, especially important key details. Replace this paragraph with the description of the project, especially important key details.',
         skills: [web[0], web[1], web[2]], //html, css, js
         webURL: 'nnhafff.com',
-        pics: ['url1', 'url2', 'url3']
+        pics: [
+            {
+                id: 1,
+                url: 'https://i.imgur.com/DnJihER.jpg',
+                name: 'pic 1'
+            },
+
+            {
+                id: 2,
+                url: 'https://i.imgur.com/dwNM6UT.jpg',
+                name: 'pic 2'
+            },
+
+            {
+                id: 3,
+                url: 'https://i.imgur.com/rBqqY3l.jpg',
+                name: 'pic 3'
+            },
+        ]
     },
 ]

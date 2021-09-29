@@ -25,6 +25,11 @@ const WorkProject = ({ runOnce, name, description, skills, webURL, pics }) => {
                 </div>
                 <div className='project-pics-container'>
                     <DottedBackground runOnce={runOnce}></DottedBackground>
+                    {pics.map((pic) => (
+                        <div key={pic.id} className={`project-pic project-pic-${pic.id}`}>
+                            <img className='pic' src={pic.url} alt={pic.name} />
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
