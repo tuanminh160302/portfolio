@@ -1,0 +1,49 @@
+.taskbar {
+    height: 3vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    position: fixed;
+    bottom: 5vh;
+    z-index: 10000000;
+
+    .volume-mute {
+        fill: white;
+        position: absolute;
+        right: 10vw;
+        height: 3vh;
+        width: 3vh;
+        cursor: pointer;
+        transition: .3s;
+        z-index: 100;
+        
+    
+        #unmute {
+            opacity: 0;
+            transition: .3s;
+        }
+    
+        &.unmute {
+            #unmute {
+                opacity: 1 !important;
+                transition: .3s;
+            }
+    
+            #mute {
+                opacity: 0 !important;
+                transition: .3s;
+            }
+        }
+    }
+    
+    .toggle {
+        position: absolute;
+        right: 5vw;
+        height: 3vh;
+        width: auto;
+        cursor: pointer;
+        transition: 0;
+        z-index: 100;
+    }
+}
