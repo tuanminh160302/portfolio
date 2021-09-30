@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import './landing-page.styles.scss'
 
 import { connect } from 'react-redux';
@@ -28,7 +28,6 @@ import Panel from '../../components/panel/panel.component';
 import { gsap } from 'gsap'
 import { CustomEase } from 'gsap/CustomEase';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Fragment } from 'react';
 gsap.registerPlugin(ScrollTrigger, CustomEase)
 
 const LandingPage = ({ toggleClicked, setToggle }) => {

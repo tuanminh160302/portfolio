@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './header.styles.scss';
 
 import { connect } from 'react-redux';
@@ -9,9 +9,28 @@ import gsap from 'gsap'
 import { ReactComponent as CloseIcon } from '../../assets/svg/close-icon.svg'
 import { ReactComponent as OpenIcon } from '../../assets/svg/open-icon.svg'
 
-const Header = ({toggleClicked}) => {
+const Header = ({toggleClicked, setToggle}) => {
 
     const [smoothHover, setSmoothHover] = useState(false)
+
+    useEffect(() => {
+        let toggleTl = gsap.timeline()
+        toggleTl.to('.header', { duration: .2, background: '#eaeaea'}, .01)
+        toggleTl.pause()
+        
+        let toggleTlRev = gsap.timeline()
+        toggleTlRev.to('.header', { duration: .2, background: '#333333'}, .01)
+        toggleTlRev.pause()
+
+        toggleClicked ? (
+            toggleTl.play()
+        ) : (
+            toggleTlRev.play()
+        )
+
+        console.log(toggleClicked)
+
+    }, [toggleClicked])
 
     const handleMenuOpen = () => {
         gsap.to('.header-open', { duration: .5, opacity: 0})

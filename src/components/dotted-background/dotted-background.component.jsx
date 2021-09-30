@@ -34,7 +34,7 @@ const DottedBackground = ({runOnce}) => {
         const dottedDivHeight = dottedDiv.clientHeight
         const dottedDivWidth = dottedDiv.clientWidth
         runOnce ? getDots(dottedDivWidth, dottedDivHeight) : console.log('lmao') 
-    }, [])
+    }, [runOnce])
 
     return (
         <div ref={dottedDivRef} className='dotted-background'>
