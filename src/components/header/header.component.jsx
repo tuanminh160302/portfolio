@@ -28,8 +28,6 @@ const Header = ({toggleClicked, setToggle}) => {
             toggleTlRev.play()
         )
 
-        console.log(toggleClicked)
-
     }, [toggleClicked])
 
     const handleMenuOpen = () => {

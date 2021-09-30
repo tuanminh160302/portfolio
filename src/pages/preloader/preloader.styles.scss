@@ -1,0 +1,52 @@
+@import '../../assets/scss/ui-kit.scss';
+
+html {
+    overflow-y: hidden;
+}
+
+.preloader {
+    height: 100vh;
+    width: 100vw;
+    background: $sig-dark;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 100000000000;
+
+    .preloader-logo {
+        position: absolute;
+        top: 30vh;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 30vh;
+        width: auto;
+    }
+
+    .loading-bar-container {
+        height: 20px;
+        width: 30vw;
+        background: white;
+        border-radius: 30px;
+        position: absolute;
+        top: calc(60vh + 7.6vh);
+        left: 50%;
+        transform: translateX(-50%);
+        overflow: hidden;
+
+        .loading-bar {
+            height: 100%;
+            width: calc(100% + 20px);
+            border-radius: 30px;
+            background: $sig-yellow;
+            transform: scaleX(0);
+            -webkit-transform: scaleX(0);
+            transform-origin: left;
+            -webkit-transform-origin: left;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
