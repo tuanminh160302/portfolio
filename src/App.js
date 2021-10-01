@@ -17,6 +17,7 @@ import slideEase from './assets/anim/anim-ease';
 const App = ({loaded, setLoaded}) => {
 
   useEffect(() => {
+    console.log('fix social media icons index')
     // Load all dependencies the web needs
     slideEase()
   })
