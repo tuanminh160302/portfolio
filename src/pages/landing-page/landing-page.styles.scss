@@ -224,7 +224,6 @@
         position: absolute;
         right: -15vh;
         bottom: -300%;
-        pointer-events: none;
 
         .section-1-github-icon {
             fill: black;
@@ -236,7 +235,6 @@
             background-color: white;
             cursor: pointer;
             transition: .3s ease-in-out;
-            pointer-events: auto;
 
             &.section-1-github-icon:hover {
                 padding: 2.5vh;
