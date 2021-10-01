@@ -23,15 +23,10 @@ import Button from '../../components/button/button.component';
 import Panel from '../../components/panel/panel.component';
 
 import { gsap } from 'gsap'
-import { CustomEase } from 'gsap/CustomEase';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger, CustomEase)
+gsap.registerPlugin(ScrollTrigger)
 
 const LandingPage = ({ toggleClicked }) => {
-
-    useEffect(() => {
-        CustomEase.create('slide', "M0,0 C0.29,0 0.345,0.015 0.416,0.1 0.485,0.183 0.478,0.358 0.498,0.502 0.512,0.602 0.517,0.794 0.58,0.888 0.655,0.999 0.704,1 1,1 ")
-    }, [])
 
     const [buttonClicked, setButtonClicked] = useState(false)
     const [panelDetails, setPanelDetails] = useState(0)

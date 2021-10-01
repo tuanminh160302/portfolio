@@ -12,13 +12,19 @@ import WorkPage from './pages/work-page/work-page.component'
 import Taskbar from './components/taskbar/taskbar.component'
 import Preloader from './pages/preloader/preloader.component';
 
+import slideEase from './assets/anim/anim-ease';
+
 const App = ({loaded, setLoaded}) => {
 
   useEffect(() => {
-    console.log(loaded)
+    // Load all dependencies the web needs
+    slideEase()
+  })
+
+  useEffect(() => {
     setTimeout(() => {
       setLoaded()
-    }, 4000)
+    }, 2000)
   }, [loaded, setLoaded])
 
   return (
