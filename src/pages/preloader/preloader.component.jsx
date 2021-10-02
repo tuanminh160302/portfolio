@@ -8,8 +8,6 @@ import { gsap } from 'gsap'
 
 const Preloader = ({loaded}) => {
 
-    const [initRun, setInitRun] = useState(true)
-
     const process_preloader_init = () => {
         let preloaderTl = gsap.timeline()
         preloaderTl.to('.loading-bar', { duration: 2, scaleX: .5, ease: 'power4.inOut'})
@@ -40,12 +38,8 @@ const Preloader = ({loaded}) => {
     }, [])
 
     useEffect(() => {
-        initRun ? (
-            setInitRun(false)
-        ) : (
-            memoizedLoadPage()
-        )
-    }, [loaded, initRun, memoizedLoadPage])
+        memoizedLoadPage()
+    }, [loaded, memoizedLoadPage])
 
     return(
         <div className='preloader'>

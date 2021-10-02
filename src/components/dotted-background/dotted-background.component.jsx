@@ -26,14 +26,15 @@ const DottedBackground = ({runOnce}) => {
                 nativeDottedDiv.appendChild(dotListHorizontal)
             }
         }
-        console.log('runOnce')
     }
 
     useEffect(() => {
         const dottedDiv = dottedDivRef.current
         const dottedDivHeight = dottedDiv.clientHeight
         const dottedDivWidth = dottedDiv.clientWidth
-        runOnce ? getDots(dottedDivWidth, dottedDivHeight) : console.log('lmao') 
+        if (runOnce === true) {
+            getDots(dottedDivWidth, dottedDivHeight)
+        }
     }, [runOnce])
 
     return (
