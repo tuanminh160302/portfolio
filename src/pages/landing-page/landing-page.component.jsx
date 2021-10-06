@@ -28,6 +28,14 @@ gsap.registerPlugin(ScrollTrigger)
 
 const LandingPage = ({ toggleClicked }) => {
 
+    useEffect(() => {
+        return () => {
+            setTimeout(() => {
+                console.log('2000')
+            }, 2000)
+        }
+    })
+
     const [buttonClicked, setButtonClicked] = useState(false)
     const [panelDetails, setPanelDetails] = useState(0)
     // const [toggleClicked, setToggleClicked] = useState(false)
@@ -192,7 +200,7 @@ const LandingPage = ({ toggleClicked }) => {
     }, [])
 
     return (
-        <div className='landing-page'>
+        <div className={`landing-page`}>
             <div className='section-1-fav-details'>
                 <div className={`${panelDetails === '1' ? 'details-should-display' : 'details-should-hide'} fav-details`}>
                     <Panel className='fav-details-panel' content={

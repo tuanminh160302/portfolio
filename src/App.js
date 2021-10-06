@@ -3,6 +3,10 @@ import './App.scss';
 
 import { connect } from 'react-redux';
 
+import { useLocation } from 'react-router';
+
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+
 import { setLoaded } from './redux/load-trigger/load-trigger.actions';
 import { getLocation } from './redux/location/location.actions';
 
@@ -18,6 +22,8 @@ import { gsap } from 'gsap'
 import slideEase from './assets/anim/anim-ease';
 
 const App = ({loaded, setLoaded, getLocation, location, history}) => {
+
+  const transitionLocation = useLocation()
 
   location = history.location.pathname
   
@@ -56,10 +62,14 @@ const App = ({loaded, setLoaded, getLocation, location, history}) => {
       <Preloader />
       <Header />
       <Taskbar />
-      <Switch>
-        <Route exact path='/' render={() => (<LandingPage />)}></Route>
-        <Route exact path='/work' render={() => (<WorkPage />)}></Route>
-      </Switch>
+      <TransitionGroup>
+        <CSSTransition key={transitionLocation.key} classNames='route-transition' timeout={1200}>
+          <Switch location={transitionLocation}>
+            <Route exact path='/' render={() => (<LandingPage />)}></Route>
+            <Route exact path='/work' render={() => (<WorkPage />)}></Route>
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
     </div>
   );
 }
