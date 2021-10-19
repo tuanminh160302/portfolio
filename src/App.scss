@@ -30,26 +30,47 @@ html, body {
     }
 }
 
+// .route-transition-enter {
+//     opacity: 0;
+//     overflow-y: hidden;
+
+//     .route-transition-enter-active {
+//         opacity: 1;
+//         overflow-y: visible;
+//     }
+// }
+
+// .route-transition-exit {
+//     opacity: 1;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     overflow-y: hidden;
+
+//     .route-transition-exit-active {
+//         opacity: 0;
+//         overflow-y: visible;
+//     }
+// }
+
 .route-transition-enter {
+    position: absolute;
+    display: none;
     opacity: 0;
-    overflow-y: hidden;
 
     .route-transition-enter-active {
         opacity: 1;
-        overflow-y: visible;
+        display: block;
     }
 }
 
 .route-transition-exit {
     opacity: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow-y: hidden;
+    display: block;
 
     .route-transition-exit-active {
         opacity: 0;
-        overflow-y: visible;
+        display: none;
     }
 }
 

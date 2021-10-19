@@ -34,15 +34,21 @@ const App = ({loaded, setLoaded, getLocation, location, history}) => {
   const changeCurtain = () => {
     let changeCurtainTl = gsap.timeline()
     changeCurtainTl.to(curtain.current, { duration: 1.2, scaleX: 1, ease: 'slide' })
-      .to(curtain.current, { duration: 1.2, scaleX: 0, ease: 'slide' })
+      .to(curtain.current, { duration: 1.5, background: '#D79922' }, .7)
+      .to(curtain.current, { transformOrigin: 'right'}, 1.2)
+      .to(curtain.current, { duration: 1.2, scaleX: 0, ease: 'slide' }, 1.2)
+      .to(curtain.current, { transformOrigin: 'left', background: '#E73F7F'}, 2.5)
   }
 
   useEffect(() => {
-    isInitRun.current ? (
+    if (isInitRun.current === true) {
       isInitRun.current = false
-    ) : (
+    } else if (isInitRun.current === false) {
       changeCurtain()
-    )
+      setTimeout(() => {
+        window.scrollTo(0,0)
+      }, 1200)
+    }
   }, [location, isInitRun])
 
   useEffect(() => {
@@ -54,7 +60,7 @@ const App = ({loaded, setLoaded, getLocation, location, history}) => {
     setTimeout(() => {
       setLoaded()
     }, 2000)
-  }, [loaded, setLoaded])
+  })
 
   return (
     <div className="App">

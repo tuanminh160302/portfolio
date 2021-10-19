@@ -28,14 +28,6 @@ gsap.registerPlugin(ScrollTrigger)
 
 const LandingPage = ({ toggleClicked }) => {
 
-    useEffect(() => {
-        return () => {
-            setTimeout(() => {
-                console.log('2000')
-            }, 2000)
-        }
-    })
-
     const [buttonClicked, setButtonClicked] = useState(false)
     const [panelDetails, setPanelDetails] = useState(0)
     // const [toggleClicked, setToggleClicked] = useState(false)
