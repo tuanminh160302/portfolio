@@ -17,19 +17,22 @@ import WorkPage from './pages/work-page/work-page.component'
 import Taskbar from './components/taskbar/taskbar.component'
 import Preloader from './pages/preloader/preloader.component';
 import ChangeCurtain from './components/change-curtain/change-curtain.component';
+import LoadingScreen from './components/loadingScreen/loading-screen.component';
 
 import { gsap } from 'gsap'
 import slideEase from './assets/anim/anim-ease';
 
-const App = ({loaded, setLoaded, getLocation, location, history}) => {
+const App = ({loaded, setLoaded, getLocation, history}) => {
 
   const transitionLocation = useLocation()
 
-  location = history.location.pathname
+  let location = history.location.pathname
   
   const curtain = useRef()
 
-  const isInitRun = useRef(true)
+  const loadingScreenRef = useRef()
+
+  const isInitRender = useRef(true)
 
   const changeCurtain = () => {
     let changeCurtainTl = gsap.timeline()
@@ -39,16 +42,22 @@ const App = ({loaded, setLoaded, getLocation, location, history}) => {
       .to(curtain.current, { background: '#E73F7F'}, 2.5)
   }
 
+  const handleLoadingScreen = () => {
+    gsap.to(loadingScreenRef.current, { display: 'block'});
+    gsap.to(loadingScreenRef.current, { delay: 1.2, display: 'none'})
+  }
+
   useEffect(() => {
-    if (isInitRun.current === true) {
-      isInitRun.current = false
-    } else if (isInitRun.current === false) {
+    if (isInitRender.current === true) {
+      isInitRender.current = false
+    } else if (isInitRender.current === false) {
+      handleLoadingScreen()
       changeCurtain()
       setTimeout(() => {
         window.scrollTo(0,0)
       }, 1200)
     }
-  }, [location, isInitRun])
+  }, [location])
 
   useEffect(() => {
     // Load all dependencies the web needs
@@ -64,6 +73,7 @@ const App = ({loaded, setLoaded, getLocation, location, history}) => {
   return (
     <div className="App">
       <ChangeCurtain ref={curtain}/>
+      <LoadingScreen ref={loadingScreenRef}/>
       <Preloader />
       <Taskbar />
       <Header />
@@ -81,12 +91,12 @@ const App = ({loaded, setLoaded, getLocation, location, history}) => {
 
 const mapStateToProps = ({loaded, location}) => ({
   loaded: loaded.loaded,
-  location: location.location
+  // location: location.location
 })
 
 const mapDispatchToProps = (dispatch) => ({
   setLoaded: () => {dispatch(setLoaded())},
-  getLocation: (path) => {dispatch(getLocation(path))}
+  // getLocation: (path) => {dispatch(getLocation(path))}
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
