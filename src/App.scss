@@ -1,8 +1,11 @@
+@import './assets/scss/ui-kit.scss';
+
 html, body {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
+    background: $sig-dark;
 }
 
 // Extra small devices (portrait phones, less than 576px)
@@ -55,22 +58,18 @@ html, body {
 
 .route-transition-enter {
     position: absolute;
-    display: none;
     opacity: 0;
 
     .route-transition-enter-active {
         opacity: 1;
-        display: block;
     }
 }
 
 .route-transition-exit {
     opacity: 1;
-    display: block;
 
     .route-transition-exit-active {
         opacity: 0;
-        display: none;
     }
 }
 

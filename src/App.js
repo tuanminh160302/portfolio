@@ -35,9 +35,8 @@ const App = ({loaded, setLoaded, getLocation, location, history}) => {
     let changeCurtainTl = gsap.timeline()
     changeCurtainTl.to(curtain.current, { duration: 1.2, scaleX: 1, ease: 'slide' })
       .to(curtain.current, { duration: 1.5, background: '#D79922' }, .7)
-      .to(curtain.current, { transformOrigin: 'right'}, 1.2)
       .to(curtain.current, { duration: 1.2, scaleX: 0, ease: 'slide' }, 1.2)
-      .to(curtain.current, { transformOrigin: 'left', background: '#E73F7F'}, 2.5)
+      .to(curtain.current, { background: '#E73F7F'}, 2.5)
   }
 
   useEffect(() => {
@@ -66,8 +65,8 @@ const App = ({loaded, setLoaded, getLocation, location, history}) => {
     <div className="App">
       <ChangeCurtain ref={curtain}/>
       <Preloader />
-      <Header />
       <Taskbar />
+      <Header />
       <TransitionGroup>
         <CSSTransition key={transitionLocation.key} classNames='route-transition' timeout={1200}>
           <Switch location={transitionLocation}>

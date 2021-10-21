@@ -9,7 +9,7 @@ import { PROJECT_DATA } from '../../assets/data/project.data';
 const WorkPage = () => {
 
     return(
-        <div className='work-page'>
+        <div className='work-page page'>
             <div className='work-container'>
                 {PROJECT_DATA.map((project) => (
                     <WorkProject 

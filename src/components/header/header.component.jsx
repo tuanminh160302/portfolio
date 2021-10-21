@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './header.styles.scss';
 
 import { connect } from 'react-redux';
@@ -10,6 +10,8 @@ import { ReactComponent as CloseIcon } from '../../assets/svg/close-icon.svg'
 import { ReactComponent as OpenIcon } from '../../assets/svg/open-icon.svg'
 
 const Header = ({toggleClicked, setToggle}) => {
+
+    const menuToggle = useRef(false)
 
     const [smoothHover, setSmoothHover] = useState(false)
 
@@ -30,79 +32,48 @@ const Header = ({toggleClicked, setToggle}) => {
 
     }, [toggleClicked])
 
+    const handleMenu = () => {
+        menuToggle.current = !menuToggle.current
+        menuToggle.current ? (
+            handleMenuOpen()
+        ) : (
+            handleMenuClose()
+        )
+    }
+
     const handleMenuOpen = () => {
-        gsap.to('.header-open', { duration: .5, opacity: 0})
-        gsap.to('.header-close', { delay: .5, display: 'block'})
-        gsap.to('.header-close', { delay: .5, duration: .5, opacity: '1'})
-        
-        gsap.to('.header-nav-item', { pointerEvents: 'auto'})
-
-        gsap.to('.header-nav-item', {
-            duration: 0.9,
-            y: 0,
-            ease: 'power4.out',
-            stagger: {
-                each: 0.06,
-                from: 'end'
-            }
-        })
-
-        gsap.to('.header-nav-item', {
-            duration: .7,
-            opacity: 1,
-            stagger: {
-                each: 0.06,
-                from: 'end'
-            }
-        })
-
-
-        setTimeout(() => {
-            setSmoothHover(true)
-        }, 910)
+        let menuOpen = gsap.timeline()
+        menuOpen.to('body', { overflow: 'hidden'})
+                .to('.page', { webkitTransformOrigin: 'top'}, .01)
+                .to('.page', { duration: .7, scale: .9, ease: 'power4.inOut'}, .01)
+                .to('.page', { duration: 1.2, y: '100vh', ease: 'slide'}, .15)
+                .to('.menu', { duration: 1.2, y: '0', ease: 'slide'}, .15)
+                .to('.menu', { duration: .7, scale: 1, ease: 'power4.inOut'}, .4)
+                .to('.header-open', { duration: .7, fill: 'black'}, .7)
     }
 
     const handleMenuClose = () => {
-        gsap.to('.header-close', { duration: .5, opacity: 0})
-        gsap.to('.header-close', { delay: .5, display: 'none'})
-        gsap.to('.header-open', { delay: .5, duration: .5, opacity: '1'})
-
-        setSmoothHover(false)
-
-        gsap.to('.header-nav-item', { pointerEvents: 'none'})
-
-        gsap.to('.header-nav-item', {
-            duration: 0.9,
-            y: 200,
-            ease: 'power4.in',
-            stagger: {
-                each: 0.06,
-                from: 'start'
-            }
-        })
-        gsap.to('.header-nav-item', {
-            delay: .25,
-            duration: 0.75,
-            opacity: 0,
-            stagger: {
-                each: 0.06,
-                from: 'start'
-            }
-        })
-    }
+        let menuClose = gsap.timeline()
+        menuClose.to('.menu', { duration: .7, scale: .9, ease: 'power4.inOut'})
+                 .to('.menu', { duration: 1.2, y: '-100vh', ease: 'slide'}, .15)
+                 .to('.page', { duration: 1.2, y: '0', ease: 'slide'}, .15)
+                 .to('.page', { duration: .7, scale: 1, ease: 'power4.inOut'}, .4)
+                 .to('body', { overflow: 'visible'}, .01)
+                 .to('.header-open', { duration: .7, fill: 'white'}, .7)
+                }
 
     return (
         <div className='header'>
             <span className='header-logo'>steve</span>
             <div className='header-nav-container'>
+                <OpenIcon className='header-open apply-toggle' onClick={() => {handleMenu()}}/>
+            </div>
+            <div className='menu'>
                 <Link to='/' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>home</Link>
                 <Link to='/work' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>work</Link>
                 <Link to='/' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>skills</Link>
                 <Link to='/' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>resumé</Link>
                 <Link to='/' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>contact</Link>
-                {/* <span className={`${smoothHover ? 'smooth-hover' : null} header-nav-item apply-toggle`}>contact</span> */}
-                <OpenIcon className='header-open apply-toggle' onClick={() => {handleMenuOpen()}}/>
-                <CloseIcon className='header-close apply-toggle' onClick={() => {handleMenuClose()}}/>
             </div>
         </div>
     )
