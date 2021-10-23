@@ -14,11 +14,27 @@ const Header = ({ toggleClicked, setToggle, history }) => {
 
     let location = history.location.pathname
 
+    // const headerNavItemBorder = useRef('')
+
+    const [headerNavItemBorder, setHeaderNavItemBorder] = useState(location.replace('/', ''))
+
     const isInitRender = useRef(true)
 
     const menuToggle = useRef(false)
 
-    const [smoothHover, setSmoothHover] = useState(false)
+    useEffect(() => {
+        if (location === '/') {
+            // headerNavItemBorder.current = 'home'
+            setTimeout(() => {
+                setHeaderNavItemBorder('')
+            }, 1000)
+        } else if (location === '/work') {
+            // headerNavItemBorder.current = 'work'
+            setTimeout(() => {
+                setHeaderNavItemBorder('work')
+            }, 1000)
+        }
+    }, [location])
 
     useEffect(() => {
         let toggleTl = gsap.timeline()
@@ -65,19 +81,16 @@ const Header = ({ toggleClicked, setToggle, history }) => {
         let menuOpen = gsap.timeline()
         menuOpen.to('.menu', { duration: 1.2, y: '0', ease: 'slide' })
             .to('.menu', { duration: .7, scale: 1, ease: 'power4.inOut' }, .35)
-            .to('.header-open', { duration: .7, fill: 'black' }, .6)
     }
 
     const handleMenuClose = () => {
         let menuClose = gsap.timeline()
         menuClose.to('.menu', { duration: 1.2, y: '-100vh', ease: 'slide' })
             .to('.menu', { duration: .7, scale: .9, ease: 'power4.inOut' }, .2)
-            .to('.header-open', { duration: .7, fill: 'white' }, .55)
     }
 
     const autoHandleMenu = () => {
         gsap.to('.menu', { scale: 0.9, y: '-100vh' })
-        gsap.to('.header-open', { fill: 'white' })
     }
 
     return (
@@ -86,12 +99,15 @@ const Header = ({ toggleClicked, setToggle, history }) => {
             <div className='header-nav-container'>
                 <OpenIcon className='header-open apply-toggle' onClick={() => { handleMenu() }} />
             </div>
-            <div className='menu'>
-                <Link to='/' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>home</Link>
-                <Link to='/work' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>work</Link>
-                <Link to='/' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>skills</Link>
-                <Link to='/' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>resumé</Link>
-                <Link to='/' className={`${smoothHover ? 'smooth-hover' : null} ${toggleClicked ? 'toggle-clicked' : null} header-nav-item apply-toggle`}>contact</Link>
+            <div className={`${headerNavItemBorder}-active menu`}>
+                <div className='nav-container'>
+                    <Link to='/' className='nav-item'>Home</Link>
+                    <Link to='/work' className='nav-item'>Work</Link>
+                    <Link to='/' className='nav-item'>Skills</Link>
+                    <Link to='/' className='nav-item'>Resumé</Link>
+                    <Link to='/' className='nav-item'>Contact</Link>
+                </div>
+                <div className='nav-decor'></div>
             </div>
         </div>
     )
