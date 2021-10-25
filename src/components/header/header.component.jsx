@@ -7,34 +7,16 @@ import { withRouter } from 'react-router';
 
 import gsap from 'gsap'
 
-import { ReactComponent as CloseIcon } from '../../assets/svg/close-icon.svg'
 import { ReactComponent as OpenIcon } from '../../assets/svg/open-icon.svg'
+import { ReactComponent as MenuLogo } from '../../assets/svg/menulogo.svg';
 
 const Header = ({ toggleClicked, setToggle, history }) => {
 
     let location = history.location.pathname
 
-    // const headerNavItemBorder = useRef('')
-
-    const [headerNavItemBorder, setHeaderNavItemBorder] = useState(location.replace('/', ''))
-
     const isInitRender = useRef(true)
 
     const menuToggle = useRef(false)
-
-    useEffect(() => {
-        if (location === '/') {
-            // headerNavItemBorder.current = 'home'
-            setTimeout(() => {
-                setHeaderNavItemBorder('')
-            }, 1000)
-        } else if (location === '/work') {
-            // headerNavItemBorder.current = 'work'
-            setTimeout(() => {
-                setHeaderNavItemBorder('work')
-            }, 1000)
-        }
-    }, [location])
 
     useEffect(() => {
         let toggleTl = gsap.timeline()
@@ -60,7 +42,7 @@ const Header = ({ toggleClicked, setToggle, history }) => {
             setTimeout(() => {
                 autoHandleMenu()
                 changeMenuToggle()
-            }, 1200)
+            }, 1100)
         )
     }, [location])
 
@@ -79,18 +61,24 @@ const Header = ({ toggleClicked, setToggle, history }) => {
 
     const handleMenuOpen = () => {
         let menuOpen = gsap.timeline()
-        menuOpen.to('.menu', { duration: 1.2, y: '0', ease: 'slide' })
-            .to('.menu', { duration: .7, scale: 1, ease: 'power4.inOut' }, .35)
+        menuOpen.to('.menu', { duration: 1.2, y: 0, ease: 'slide' })
+            .to('.nav-item', { duration: .5, x: 0, stagger: .1}, .3)
+            .to('.nav-item', { duration: .3, opacity: 1, stagger: .1}, .6)
+            .to('.nav-decor', { duration: .5, scaleX: 1, ease: 'back.out(2.5)'}, .6)
     }
 
     const handleMenuClose = () => {
         let menuClose = gsap.timeline()
         menuClose.to('.menu', { duration: 1.2, y: '-100vh', ease: 'slide' })
-            .to('.menu', { duration: .7, scale: .9, ease: 'power4.inOut' }, .2)
+            .to('.nav-item', { duration: .2, opacity: 0}, .01)
+            .to('.nav-item', { x: '-50px'}, .2)
+            .to('.nav-decor', { duration: .5, scaleX: 0, ease: 'back.in(2.5)'}, .01)
     }
 
     const autoHandleMenu = () => {
-        gsap.to('.menu', { scale: 0.9, y: '-100vh' })
+        gsap.to('.menu', { y: '-100vh' })
+        gsap.to('.nav-item', { opacity: 0, x: '-50px'})
+        gsap.to('.nav-decor', { scaleX: 0})
     }
 
     return (
@@ -99,15 +87,15 @@ const Header = ({ toggleClicked, setToggle, history }) => {
             <div className='header-nav-container'>
                 <OpenIcon className='header-open apply-toggle' onClick={() => { handleMenu() }} />
             </div>
-            <div className={`${headerNavItemBorder}-active menu`}>
-                <div className='nav-container'>
+            <div className={`menu`}>
+                <MenuLogo className='menu-logo'/>
+                <div className='nav-decor'>
                     <Link to='/' className='nav-item'>Home</Link>
                     <Link to='/work' className='nav-item'>Work</Link>
                     <Link to='/' className='nav-item'>Skills</Link>
                     <Link to='/' className='nav-item'>Resumé</Link>
                     <Link to='/' className='nav-item'>Contact</Link>
                 </div>
-                <div className='nav-decor'></div>
             </div>
         </div>
     )

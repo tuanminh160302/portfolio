@@ -47,78 +47,22 @@
         margin: 0;
         padding: 0;
         overflow: 0;
-        transform: scale(0.9) translateY(-100vh);
-        -webkit-transform: scale(0.9) translateY(-100vh);
+        transform: translateY(-100vh);
+        -webkit-transform: translateY(-100vh);
         transform-origin: top;
         -webkit-transform-origin: top;
-        
-        &.-active {
-            .nav-item:nth-child(1) {
-                padding: 16px 36px;
-                border: 2px solid black;
-            }
-            
-            .nav-item:nth-child(2), .nav-item:nth-child(3), .nav-item:nth-child(4), .nav-item:nth-child(5) {
-                padding: 0;
-                border: none;
-            }
-        }
-
-        &.work-active {
-            .nav-item:nth-child(2) {
-                padding: 16px 36px;
-                border: 2px solid black;
-            }
-            
-            .nav-item:nth-child(1), .nav-item:nth-child(3), .nav-item:nth-child(4), .nav-item:nth-child(5) {
-                padding: 0;
-                border: none;
-            }
-        }
-
-        &.skills-active {
-            .nav-item:nth-child(3) {
-                padding: 16px 36px;
-                border: 2px solid black;
-            }
-            
-            .nav-item:nth-child(1), .nav-item:nth-child(2), .nav-item:nth-child(4), .nav-item:nth-child(5) {
-                padding: 0;
-                border: none;
-            }
-        }
 
         a {
             text-decoration: none;
             width: fit-content;
         }
-        
-        .nav-container {
-            margin: 0;
-            padding: 0;
-            width: 30vw;
-            height: 100%;
-            border-right: 4px solid black;
-            display: flex;
-            flex-direction: column;
-            background: transparent;
 
-            .nav-item {
-                font-size: 1.5rem;
-                color: black;
-                font-family: 'Montserrat', sans-serif;
-                margin: 0 0 5vh 15vw;
-                transition: .3s;
-
-                &.nav-item:nth-child(1) {
-                    margin-top: 20vh;
-                }
-
-                &.nav-item:hover {
-                    color: $sig-pink;
-                    transition: .3s;
-                }
-            }
+        .menu-logo {
+            position: absolute;
+            top: 50%;
+            left: 20vw;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
         }
 
         .nav-decor {
@@ -131,6 +75,28 @@
             position: absolute;
             top: 0;
             right: -50vh;
+            transform: scaleX(0);
+            -webkit-transform: scaleX(0);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .nav-item {
+                font-size: 1.5rem;
+                color: white;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 400;
+                margin: 0 0 5vh 15vw;
+                transition: .3s;
+                transform: translateX(-50px);
+                -webkit-transform: translateX(-50px);
+                opacity: 0;
+
+                &.nav-item:hover {
+                    color: $sig-pink;
+                    transition: .3s;
+                }
+            }
         }
     }
 }
