@@ -47,6 +47,7 @@ const Preloader = ({loaded}) => {
             <div className='loading-bar-container preloader-element'>
                 <div className='loading-bar'></div>
             </div>
+            <p className='alert-msg'>Warning: This website is being redone... This is just a demo</p>
         </div>
     )
 }
